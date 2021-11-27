@@ -25,20 +25,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val showAdapter = ShowAdapter()
-        val gridLayoutManager = GridLayoutManager(this, 5)
-        gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                return if (showAdapter.getItemViewType(position) == ShowAdapter.LOADING_ITEM)
-                    1 else 5
+        binding.list.apply {
+            val layoutManager = layoutManager as GridLayoutManager
+            layoutManager.spanSizeLookup = object : SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (showAdapter.getItemViewType(position) == ShowAdapter.LOADING_ITEM)
+                        1 else layoutManager.spanCount
+                }
             }
+            adapter = showAdapter.withLoadStateHeaderAndFooter(
+                header = LoadStateAdapter { showAdapter.retry() },
+                footer = LoadStateAdapter { showAdapter.retry() }
+            )
         }
-        binding.list.layoutManager = gridLayoutManager
-        binding.list.adapter = showAdapter.withLoadStateHeaderAndFooter(
-            header = LoadStateAdapter { showAdapter.retry() },
-            footer = LoadStateAdapter { showAdapter.retry() }
-        )
-
-
         binding.retryButton.setOnClickListener { showAdapter.retry() }
 
         lifecycleScope.launch {
