@@ -1,12 +1,11 @@
 package com.android.sample
 
-import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.Forest.plant
 
 @HiltAndroidApp
-class SampleApplication : Application() {
+class Application : android.app.Application() {
 
 
     override fun onCreate() {
