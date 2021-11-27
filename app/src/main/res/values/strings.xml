@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PagingSample</string>
+    <string name="no_results">No results 😓</string>
+    <string name="retry">Retry</string>
+</resources>
