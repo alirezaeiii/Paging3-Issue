@@ -1,8 +1,13 @@
 package com.android.sample.model
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "shows")
 data class Show(
-    val id: Long,
+    @PrimaryKey val id: Long,
     val name: String,
-    val image: Image?,
+    @Embedded val image: Image?,
     val summary: String?
 )

@@ -44,20 +44,25 @@ class MainActivity : AppCompatActivity() {
             viewModel.pagingDataFlow.collectLatest(showAdapter::submitData)
         }
 
+        binding.bindList(
+            showAdapter = showAdapter
+        )
+    }
+
+    private fun ActivityMainBinding.bindList(
+        showAdapter: ShowAdapter
+    ) {
         lifecycleScope.launch {
             showAdapter.loadStateFlow.collect { loadState ->
-                val isListEmpty = loadState.refresh is LoadState.NotLoading &&
-                        showAdapter.itemCount == 0
-                with(binding) {
+                val isListEmpty = loadState.refresh is LoadState.NotLoading && showAdapter.itemCount == 0
                     // show empty list
-                    emptyList.isVisible = isListEmpty
-                    // Only show the list if refresh succeeds.
-                    list.isVisible = !isListEmpty
-                    // Show loading spinner during initial load or refresh.
-                    progressBar.isVisible = loadState.source.refresh is LoadState.Loading
-                    // Show the retry state if initial load or refresh fails.
-                    retryButton.isVisible = loadState.source.refresh is LoadState.Error
-                }
+                emptyList.isVisible = isListEmpty
+                // Only show the list if refresh succeeds, either from the the local db or the remote.
+                list.isVisible = loadState.source.refresh is LoadState.NotLoading || loadState.mediator?.refresh is LoadState.NotLoading
+                // Show loading spinner during initial load or refresh.
+                progressBar.isVisible = loadState.mediator?.refresh is LoadState.Loading
+                // Show the retry state if initial load or refresh fails.
+                retryButton.isVisible = loadState.mediator?.refresh is LoadState.Error && showAdapter.itemCount == 0
             }
         }
     }
