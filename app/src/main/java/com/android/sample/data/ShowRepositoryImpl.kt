@@ -13,16 +13,16 @@ import javax.inject.Singleton
 
 @Singleton
 class ShowRepositoryImpl @Inject constructor(
-    service: ShowService,
-    database: ShowDatabase
+    private val service: ShowService,
+    private val database: ShowDatabase
 ) : ShowRepository {
 
     @OptIn(ExperimentalPagingApi::class)
-    override val fetchResultStream: Flow<PagingData<Show>> = Pager(
-        config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
-        remoteMediator = ShowRemoteMediator(service, database),
-        pagingSourceFactory = { database.showDao().getShows() }
-    ).flow
+    override val fetchResultStream: Flow<PagingData<Show>>
+        get() = Pager(config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
+            remoteMediator = ShowRemoteMediator(service, database),
+            pagingSourceFactory = { database.showDao().getShows() }
+        ).flow
 
 
     companion object {
