@@ -18,7 +18,7 @@ class ShowRepositoryImpl @Inject constructor(
 ) : ShowRepository {
 
     @OptIn(ExperimentalPagingApi::class)
-    override val fetchResultStream: Flow<PagingData<Show>>
+    override val resultStream: Flow<PagingData<Show>>
         get() = Pager(config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
             remoteMediator = ShowRemoteMediator(service, database),
             pagingSourceFactory = { database.showDao().getShows() }
