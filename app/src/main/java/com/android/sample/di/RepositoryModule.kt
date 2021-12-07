@@ -14,5 +14,5 @@ abstract class RepositoryModule {
 
     @Singleton
     @Binds
-    internal abstract fun bindRepository(dashboardRepository: ShowRepositoryImpl): ShowRepository
+    internal abstract fun bindRepository(repository: ShowRepositoryImpl): ShowRepository
 }
