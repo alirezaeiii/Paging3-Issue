@@ -16,5 +16,5 @@ class ShowViewModel @Inject constructor(
 ) : ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<Show>> =
-        repository.resultStream.cachedIn(viewModelScope)
+        repository.fetchResultStream.cachedIn(viewModelScope)
 }

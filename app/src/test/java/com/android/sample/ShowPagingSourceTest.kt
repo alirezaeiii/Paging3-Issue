@@ -15,7 +15,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import kotlin.test.assertEquals
 
-@ExperimentalCoroutinesApi
+@OptIn(ExperimentalCoroutinesApi::class)
 class ShowPagingSourceTest {
 
     @Mock

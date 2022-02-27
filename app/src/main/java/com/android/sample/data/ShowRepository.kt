@@ -5,5 +5,5 @@ import com.android.sample.model.Show
 import kotlinx.coroutines.flow.Flow
 
 interface ShowRepository {
-    val resultStream: Flow<PagingData<Show>>
+    val fetchResultStream: Flow<PagingData<Show>>
 }
