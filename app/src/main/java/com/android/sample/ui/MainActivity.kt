@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val showAdapter = ShowAdapter()
-        val gridLayoutManager = GridLayoutManager(this, 5)
+        val gridLayoutManager = GridLayoutManager(this, 3)
         gridLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (showAdapter.getItemViewType(position) == ShowAdapter.LOADING_ITEM)
-                    1 else 5
+                    1 else 3
             }
         }
         binding.list.layoutManager = gridLayoutManager
