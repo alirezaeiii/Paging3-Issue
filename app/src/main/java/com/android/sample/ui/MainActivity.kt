@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.list.layoutManager = gridLayoutManager
-        binding.list.adapter = showAdapter.withLoadStateHeaderAndFooter(
-            header = LoadStateAdapter { showAdapter.retry() },
+        binding.list.adapter = showAdapter.withLoadStateFooter(
             footer = LoadStateAdapter { showAdapter.retry() }
         )
 
