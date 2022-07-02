@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
                         1 else layoutManager.spanCount
                 }
             }
-            adapter = showAdapter.withLoadStateHeaderAndFooter(
-                header = LoadStateAdapter { showAdapter.retry() },
+            adapter = showAdapter.withLoadStateFooter(
                 footer = LoadStateAdapter { showAdapter.retry() }
             )
         }
