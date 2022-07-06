@@ -11,8 +11,8 @@ Local unit testing is done for PagingSource layer.
 ## Libraries
 * [Android Jetpack](https://developer.android.com/jetpack)
    * [Paging](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) is a library helps you load and display pages of data from a larger dataset from local storage or over network.
-   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) ViewModel is designed to store and manage UI-related data in a lifecycle conscious way. This allows data to survive configuration changes such as screen rotations.
-   * [ViewBinding](https://developer.android.com/topic/libraries/view-binding) is View binding is a feature that allows you to more easily write code that interacts with views.
+   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) is designed to store and manage UI-related data in a lifecycle conscious way. This allows data to survive configuration changes such as screen rotations.
+   * [ViewBinding](https://developer.android.com/topic/libraries/view-binding) is a feature that allows you to more easily write code that interacts with views.
    * [Room](https://developer.android.com/topic/libraries/architecture/room) is a library for data storage persistence which provides an abstraction layer over SQLite.
    * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) is a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project.
 * [Kotlin coroutines](https://developer.android.com/kotlin/coroutines) Executing code asynchronously.
