@@ -19,6 +19,6 @@ class ShowRepositoryImpl @Inject constructor(private val service: ShowService) :
 
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 245
+        const val NETWORK_PAGE_SIZE = 15
     }
 }
