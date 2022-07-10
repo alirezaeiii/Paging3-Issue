@@ -13,12 +13,16 @@ import javax.inject.Singleton
 class ShowRepositoryImpl @Inject constructor(private val service: ShowService) : ShowRepository {
 
     override val fetchResultStream: Flow<PagingData<Show>> = Pager(
-        config = PagingConfig(pageSize = NETWORK_PAGE_SIZE),
+        config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE,
+            initialLoadSize = INITIAL_LOAD_SIZE
+        ),
         pagingSourceFactory = { ShowPagingSource(service) }
     ).flow
 
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 15
+        private const val NETWORK_PAGE_SIZE = 245
+        private const val INITIAL_LOAD_SIZE = 18
     }
 }
