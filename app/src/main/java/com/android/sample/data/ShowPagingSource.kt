@@ -29,6 +29,10 @@ class ShowPagingSource(
         }
     }
 
-    // The refresh key is used for the initial load of the next PagingSource, after invalidation
-    override fun getRefreshKey(state: PagingState<Int, Show>): Int? = null
+    override fun getRefreshKey(state: PagingState<Int, Show>): Int? {
+        return state.anchorPosition?.let {
+            state.closestPageToPosition(it)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(it)?.nextKey?.minus(1)
+        }
+    }
 }
