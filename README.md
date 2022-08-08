@@ -1,5 +1,5 @@
 # Paging3-Sample
-A sample to showcase Kotlin, MVVM, Paging3, Hilt, Room, Coroutines and Retrofit.
+A sample to showcase Kotlin, MVVM, Paging3, Hilt, Room, Coroutines and Retrofit. This is a sample that showcases this issue : https://issuetracker.google.com/issues/238227615
 
 ## Features
 * MVVM Architecture + Repository design Pattern.
